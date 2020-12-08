@@ -49,7 +49,7 @@ while hasFrame(vidObj)
     T = imbinarize(result,max(T, sensibilty)); % binarize the std map
     
     %Background estimation for next frame.  
-    back = (100*back+(vidFrame.*(1-T)+back.*T))/101;
+    back = (100*back+vidFrame)/101;
 
     st = regionprops(T, 'BoundingBox' );
 
