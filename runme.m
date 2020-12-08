@@ -20,7 +20,7 @@ fun = @(x) std(x.data(:)); % function for the blocproc
 % initialize the background. 
 back = 0
 for i = 1 : 20
-    back = back + rgb2gray(double(readFrame(vidObj))/255)/20;
+    back = back + 1/i *( rgb2gray(double(readFrame(vidObj))/255)-back);
 end 
 
 % Read video frames until available
@@ -49,8 +49,7 @@ while hasFrame(vidObj)
     T = imbinarize(result,max(T, sensibilty)); % binarize the std map
     
     %Background estimation for next frame.  
-    back = (100*back+vidFrame)/101;
-
+    back = back + 1/100 *(vidFrame-back); % modified moving average MMA.
     st = regionprops(T, 'BoundingBox' );
 
     hold on     
