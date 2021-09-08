@@ -1,6 +1,6 @@
 % This matlab code performs a simple method for moving object detection. 
 % The camera is considered to remain still during the video capture. 
-
+% Written by Fernando J. Galetto
 close all
 clear all 
 
